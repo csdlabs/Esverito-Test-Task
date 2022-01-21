@@ -1,0 +1,26 @@
+.form {
+  padding: 0px 30px;
+  input {
+    background: #F0F0F0;
+    height: 100%;
+    border-radius: 4px 4px 0px 0px;
+    padding: 5px 15px;
+    border: none;
+    border-bottom: 1px solid #787878;
+    font-size: 16px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    color: #131313;
+    outline: none;
+    font-family: 'PT Sans', sans-serif;
+
+    &:-webkit-autofill {
+      border: none;
+      -webkit-text-fill-color: #131313;
+      -webkit-box-shadow: 0 0 0px 1000px #F0F0F0 inset;
+      outline: none;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+  }
+}

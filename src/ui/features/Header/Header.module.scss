@@ -1,0 +1,38 @@
+.inner{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 39px;
+  height: 80px;
+  background: #F8F7F8;
+  box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.15);
+}
+.logoInner{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  img{
+    margin-right: 8px;
+  }
+}
+.logoText{
+  font-size: 24px;
+  line-height: 31px;
+  color: #26253D;
+  padding-top: 15px;
+}
+.loginBtn{
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.loginInner{
+  display: flex;
+  p{
+    font-size: 18px;
+    line-height: 23px;
+    color: #26253D;
+    margin-right: 78px;
+  }
+}
