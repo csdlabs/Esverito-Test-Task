@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Esverito-Test-Task/static/css/main.c8477230.css",
-    "main.js": "/Esverito-Test-Task/static/js/main.51f05f44.js",
+    "main.js": "/Esverito-Test-Task/static/js/main.67ea5619.js",
     "static/js/787.7cd9c964.chunk.js": "/Esverito-Test-Task/static/js/787.7cd9c964.chunk.js",
     "static/media/header-logo.svg": "/Esverito-Test-Task/static/media/header-logo.94cdd637ac59e97e2194153e5842772b.svg",
     "index.html": "/Esverito-Test-Task/index.html",
@@ -10,11 +10,11 @@
     "static/media/login.svg": "/Esverito-Test-Task/static/media/login.ba1e989210c3b205882530e8191e9348.svg",
     "static/media/close-modal.svg": "/Esverito-Test-Task/static/media/close-modal.8da70750062c71423ccc90c4a0b6c22d.svg",
     "main.c8477230.css.map": "/Esverito-Test-Task/static/css/main.c8477230.css.map",
-    "main.51f05f44.js.map": "/Esverito-Test-Task/static/js/main.51f05f44.js.map",
+    "main.67ea5619.js.map": "/Esverito-Test-Task/static/js/main.67ea5619.js.map",
     "787.7cd9c964.chunk.js.map": "/Esverito-Test-Task/static/js/787.7cd9c964.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c8477230.css",
-    "static/js/main.51f05f44.js"
+    "static/js/main.67ea5619.js"
   ]
 }
