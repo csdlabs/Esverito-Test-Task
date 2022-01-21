@@ -13,6 +13,7 @@ const Main = React.memo(() => {
         <main>
             <Routes>
                 <Route path={ROUTES.HOME} element={<StartPage/>} />
+                <Route path={ROUTES.HOME_GIT} element={<StartPage/>} />
                 <Route path={ROUTES.LOGIN} element={<Login/>} />
                 <Route path={ROUTES.CAR_LIST} element={<CarList/>} />
                 <Route path={ROUTES.CAR} element={<Car/>} />
