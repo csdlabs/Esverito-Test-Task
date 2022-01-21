@@ -45,7 +45,8 @@ const CarList = React.memo(() => {
             paddingTop: 14,
             paddingRight: 29,
             paddingBottom: 12,
-            paddingLeft: 20
+            paddingLeft: 20,
+            minWidth: 150
         },
         fontClass: {
             fontFamily: 'PT Sans',
@@ -184,6 +185,8 @@ const CarList = React.memo(() => {
     }, [])
 
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, cars.length - page * rowsPerPage);
+
+
 
     return (
             <>

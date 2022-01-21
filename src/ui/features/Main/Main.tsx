@@ -8,6 +8,8 @@ import Error404 from "../Error404/Error404";
 import StartPage from "../StartPage/StartPage";
 
 
+
+
 const Main = React.memo(() => {
     return(
         <main>

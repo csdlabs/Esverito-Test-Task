@@ -14,7 +14,7 @@ const StartPage = React.memo(() => {
             <div className={s.inner}>
                 <h1 className={s.title}>Hi! This is Test Task for Esverito.</h1>
                 <p className={s.text}>To continue using and to view this test task, please visit login page
-                    by the link bellow and use test account data.</p>
+                    by the link bellow and use test account data. Otherwise, you will not be able to test this app.</p>
                 <p className={s.text}>Login: pidenkodmitriy@gmail.com</p>
                 <p className={s.text}>Password: zcHuKhVgk68</p>
                 <SuperButton className={s.button + ' ' + commonS.commonButton} onClick={onVisitLoginPage}>Visit Login
