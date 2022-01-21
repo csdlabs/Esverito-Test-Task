@@ -215,9 +215,9 @@ export const updateCarEngineType = (engineType: string) => {
 }
 
 
-export const getCars = (token: string) => async (dispatch: Dispatch) => {
+export const getCars = () => async (dispatch: Dispatch) => {
     dispatch(setAppIsLoadingStatus('loading'))
-    const response = await CarsApi.getCars(token)
+    const response = await CarsApi.getCars()
     try {
         dispatch(setCars(response.data.cars))
     } catch (e: any) {
@@ -228,10 +228,10 @@ export const getCars = (token: string) => async (dispatch: Dispatch) => {
     }
 }
 
-export const addNewCar = (token: string, brand: string, model: string, carNumber: string, engineType: string) => async (dispatch: Dispatch) => {
+export const addNewCar = ( brand: string, model: string, carNumber: string, engineType: string) => async (dispatch: Dispatch) => {
     dispatch(setAppIsLoadingStatus('loading'))
     try {
-        const response = await CarsApi.createCar(token, brand, model, carNumber, engineType)
+        const response = await CarsApi.createCar( brand, model, carNumber, engineType)
         dispatch(addCar(response.data.car))
     } catch (e: any) {
         dispatch(setAppIsError(e.response.data.message && (e as Error).message))
@@ -241,10 +241,10 @@ export const addNewCar = (token: string, brand: string, model: string, carNumber
     }
 }
 
-export const removeCar = (token: string, carId: number | undefined) => async (dispatch: Dispatch) => {
+export const removeCar = ( carId: number | undefined) => async (dispatch: Dispatch) => {
     dispatch(setAppIsLoadingStatus('loading'))
     try {
-        const response = await CarsApi.deleteCar(token, carId)
+        const response = await CarsApi.deleteCar( carId)
         dispatch(deleteCar(carId))
     } catch (e: any) {
         dispatch(setAppIsError(e.response.data.message && (e as Error).message))
@@ -255,10 +255,10 @@ export const removeCar = (token: string, carId: number | undefined) => async (di
 }
 
 
-export const updateCar = (token: string, carId: number, brand: string, model: string, carNumber: string, engineType: string) => async (dispatch: Dispatch) => {
+export const updateCar = (carId: number, brand: string, model: string, carNumber: string, engineType: string) => async (dispatch: Dispatch) => {
     dispatch(setAppIsLoadingStatus('loading'))
     try {
-        const response = await CarsApi.updateCar(token, carId, brand, model, carNumber, engineType)
+        const response = await CarsApi.updateCar( carId, brand, model, carNumber, engineType)
         dispatch(editCar(response.data.car))
     } catch (e: any) {
         dispatch(setAppIsError(e.response.data.message && (e as Error).message))
@@ -268,10 +268,10 @@ export const updateCar = (token: string, carId: number, brand: string, model: st
     }
 }
 
-export const getCurrentCar = (token: string, carId: number | undefined) => async (dispatch: Dispatch) => {
+export const getCurrentCar = ( carId: number | undefined) => async (dispatch: Dispatch) => {
     dispatch(setAppIsLoadingStatus('loading'))
     try {
-        const response = await CarsApi.getCar(carId, token)
+        const response = await CarsApi.getCar(carId)
         dispatch(setCurrentCar(response.data.car))
     } catch (e: any) {
         dispatch(setAppIsError(e.response.data.message && (e as Error).message))
@@ -281,10 +281,10 @@ export const getCurrentCar = (token: string, carId: number | undefined) => async
     }
 }
 
-export const updateCarBrandName = (token: string, carId: number | undefined, brand: string) => async (dispatch: Dispatch) => {
+export const updateCarBrandName = (carId: number | undefined, brand: string) => async (dispatch: Dispatch) => {
     dispatch(setAppIsLoadingStatus('loading'))
     try {
-        const response = await CarsApi.updateCarBrand(token, carId, brand)
+        const response = await CarsApi.updateCarBrand( carId, brand)
         dispatch(updateCarBrand(response.data.car.brand))
     } catch (e: any) {
         dispatch(setAppIsError(e.response.data.message && (e as Error).message))
@@ -294,10 +294,10 @@ export const updateCarBrandName = (token: string, carId: number | undefined, bra
     }
 }
 
-export const updateCarModelName = (token: string, carId: number | undefined, model: string) => async (dispatch: Dispatch) => {
+export const updateCarModelName = ( carId: number | undefined, model: string) => async (dispatch: Dispatch) => {
     dispatch(setAppIsLoadingStatus('loading'))
     try {
-        const response = await CarsApi.updateCarModel(token, carId, model)
+        const response = await CarsApi.updateCarModel( carId, model)
         dispatch(updateCarModel(response.data.car.model))
     } catch (e: any) {
         dispatch(setAppIsError(e.response.data.message && (e as Error).message))
@@ -307,10 +307,10 @@ export const updateCarModelName = (token: string, carId: number | undefined, mod
     }
 }
 
-export const updateCarNumberName = (token: string, carId: number | undefined, carNumber: string) => async (dispatch: Dispatch) => {
+export const updateCarNumberName = (carId: number | undefined, carNumber: string) => async (dispatch: Dispatch) => {
     dispatch(setAppIsLoadingStatus('loading'))
     try {
-        const response = await CarsApi.updateCarNumber(token, carId, carNumber)
+        const response = await CarsApi.updateCarNumber(carId, carNumber)
         dispatch(updateCarNumber(response.data.car.carNumber))
     } catch (e: any) {
         dispatch(setAppIsError(e.response.data.message && (e as Error).message))
@@ -319,10 +319,10 @@ export const updateCarNumberName = (token: string, carId: number | undefined, ca
         dispatch(setAppIsLoadingStatus('completed'))
     }
 }
-export const updateCarEngineTypeName = (token: string, carId: number | undefined, engineType: string) => async (dispatch: Dispatch) => {
+export const updateCarEngineTypeName = (carId: number | undefined, engineType: string) => async (dispatch: Dispatch) => {
     dispatch(setAppIsLoadingStatus('loading'))
     try {
-        const response = await CarsApi.updateCarEngineType(token, carId, engineType)
+        const response = await CarsApi.updateCarEngineType(carId, engineType)
         dispatch(updateCarEngineType(response.data.car.engineType))
     } catch (e: any) {
         dispatch(setAppIsError(e.response.data.message && (e as Error).message))

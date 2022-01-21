@@ -1,4 +1,4 @@
-import axios, {AxiosInstance, AxiosRequestConfig} from "axios";
+import axios, {AxiosInstance} from "axios";
 
 
 const instance = axios.create({
@@ -11,13 +11,12 @@ const setInterceptors = (instance: AxiosInstance) => {
     instance.interceptors.request.use((config: any) => {
         const token = sessionStorage.getItem('accessToken');
         config.headers['Authorization'] = token;
-        console.log(token)
         return config
     })
     instance.interceptors.response.use(
         (response) => response,
         async (error: any) => {
-            const { config: originalReq, response } = error;
+            const {config: originalReq, response} = error;
             if (response.statusCode === 401) {
                 const response = await instance.get('/refresh');
                 sessionStorage.setItem('accessToken', response.data.token);
@@ -29,10 +28,10 @@ setInterceptors(instance)
 
 
 export const CarsApi = {
-    async getCars(token: string) {
+    async getCars() {
         return instance.get<CarsResponseType>(`/cars`)
     },
-    async createCar(token: string, brand: string, model: string, carNumber: string, engineType: string) {
+    async createCar(brand: string, model: string, carNumber: string, engineType: string) {
         return instance.post<CarResponseType>(`/car`, {
             "brand": brand,
             "carNumber": carNumber,
@@ -45,10 +44,10 @@ export const CarsApi = {
             "yearOfConstruction": 0
         })
     },
-    deleteCar(token: string, carId: number | undefined) {
+    deleteCar(carId: number | undefined) {
         return instance.delete(`/car/${carId}`)
     },
-    updateCar(token: string, carId: number, brand: string, model: string, carNumber: string, engineType: string) {
+    updateCar(carId: number, brand: string, model: string, carNumber: string, engineType: string) {
         return instance.put<CarResponseType>(`/api/car/${carId}`, {
             "brand": brand,
             "carNumber": carNumber,
@@ -61,19 +60,19 @@ export const CarsApi = {
             "yearOfConstruction": 0
         })
     },
-    getCar(carId: number | undefined, token: string) {
+    getCar(carId: number | undefined) {
         return instance.get<CarResponseType>(`/car/${carId}`)
     },
-    updateCarBrand(token: string, carId: number | undefined, brand: string) {
+    updateCarBrand(carId: number | undefined, brand: string) {
         return instance.patch(`/car/${carId}`, {brand})
     },
-    updateCarModel(token: string, carId: number | undefined, model: string) {
+    updateCarModel(carId: number | undefined, model: string) {
         return instance.patch(`/car/${carId}`, {model})
     },
-    updateCarNumber(token: string, carId: number | undefined, carNumber: string) {
+    updateCarNumber(carId: number | undefined, carNumber: string) {
         return instance.patch(`/car/${carId}`, {carNumber})
     },
-    updateCarEngineType(token: string, carId: number | undefined, engineType: string) {
+    updateCarEngineType(carId: number | undefined, engineType: string) {
         return instance.patch(`/car/${carId}`, {engineType})
     },
 

@@ -22,10 +22,14 @@
   padding: 24px 37px 30px 38px;
   max-width: 775px;
   width: 100%;
-  height: 324px;
   transform: scale(0.5);
   transition: .4s all;
 }
 .modalContent.active{
   transform: scale(1);
+}
+@media screen and (max-width: 600px){
+  .modalContent{
+    padding: 20px;
+  }
 }

@@ -38,28 +38,28 @@ const LoginForm = React.memo(() => {
 
     return(
         <form onSubmit={formik.handleSubmit} className={s.form}>
-            <div className={''}>
+            <div className={commonS.formLine + ' ' + s.formLine}>
                 <SuperInputText
                     id={'email'}
                     type={'email'}
                     {...formik.getFieldProps('email')}
                     placeholder={' '}
                 />
-                <label className={''}>Email</label>
+                <label className={commonS.formLabel}>Email</label>
                 {formik.touched.email && formik.errors.email ? (
-                    <div className={''}>{formik.errors.email}</div>
+                    <div className={commonS.error}>{formik.errors.email}</div>
                 ) : null}
             </div>
-            <div className={''}>
+            <div className={commonS.formLine + ' ' + s.formLine}>
                 <SuperInputText
                     id={'password'}
                     type={'password'}
                     {...formik.getFieldProps('password')}
                     placeholder={' '}
                 />
-                <label className={''}>Password</label>
+                <label className={commonS.formLabel}>Password</label>
                 {formik.touched.password && formik.errors.password ? (
-                    <div className={''}>{formik.errors.password}</div>
+                    <div className={commonS.error}>{formik.errors.password}</div>
                 ) : null}
             </div>
             <SuperButton type={'submit'} className={commonS.commonButton}>Login</SuperButton>

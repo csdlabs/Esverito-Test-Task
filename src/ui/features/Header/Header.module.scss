@@ -36,3 +36,19 @@
     margin-right: 78px;
   }
 }
+@media screen and (max-width: 600px){
+  .inner{
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 20px 20px;
+  }
+  .loginInner{
+    margin-top: 15px;
+  }
+}
+@media screen and (max-width: 340px){
+  .loginInner p{
+    margin-right: 25px;
+  }
+}

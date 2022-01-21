@@ -83,6 +83,7 @@
   display: flex;
   width: 100%;
   justify-content: flex-end;
+  margin-top: 15px;
   button + button{
     margin-left: 10px;
   }
@@ -116,4 +117,20 @@
 }
 .currentCarRedirect{
   cursor: pointer;
+}
+.formLine{
+  max-width: 340px;
+}
+@media screen and (max-width: 740px){
+  .carsTable{
+    overflow-y: scroll;
+  }
+  .formLine{
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 600px){
+  .inner{
+    padding: 0px 20px;
+  }
 }

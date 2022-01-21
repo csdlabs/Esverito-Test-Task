@@ -2,7 +2,7 @@
 
 export type LoadingStatusType = 'idle' | 'loading' | 'completed' | 'failed';
 
-type AppReducerStateType = {
+export type AppReducerStateType = {
     loadingStatus: LoadingStatusType
     isError: string | null
 }

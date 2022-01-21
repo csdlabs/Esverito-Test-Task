@@ -29,7 +29,7 @@ import {
 } from "@material-ui/core";
 import deleteImg from "../../../assets/images/delete.svg";
 import editImg from "../../../assets/images/edit.svg";
-import {Navigate, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import arrowUp from './../../../assets/images/up-arrow.png';
 import arrowDown from './../../../assets/images/down-arrow.png'
 import {makeStyles} from '@mui/styles';
@@ -46,6 +46,10 @@ const CarList = React.memo(() => {
             paddingRight: 29,
             paddingBottom: 12,
             paddingLeft: 20
+        },
+        fontClass: {
+            fontFamily: 'PT Sans',
+            fontSize: 14,
         }
     });
     const [addCarModal, setAddCarModal] = React.useState(false)
@@ -53,15 +57,13 @@ const CarList = React.memo(() => {
     const [currentCarId, setCurrentCarId] = React.useState(0)
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
-    const token = useSelector<RootStateType, string>(state => state.auth.token)
     const carsState = useSelector<RootStateType, CarsInitStateType>(state => state.carsPage)
-    const isLoggedIn = useSelector<RootStateType, boolean>(state => state.auth.isLoggedIn)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const classes = useStyles();
     useEffect(() => {
-        dispatch(getCars(token))
-    }, [dispatch, token])
+        dispatch(getCars())
+    }, [dispatch])
 
 
     const onOpenAddCarModal = React.useCallback(() => {
@@ -84,17 +86,17 @@ const CarList = React.memo(() => {
     }, [])
 
     const onDeleteCar = React.useCallback((carId: number | undefined) => {
-        dispatch(removeCar(token, carId))
-    }, [token, dispatch])
+        dispatch(removeCar(carId))
+    }, [dispatch])
 
     const onAddCarHandler = React.useCallback((brand: string, model: string, carNumber: string, engineType: string) => {
-        dispatch(addNewCar(token, brand, model, carNumber, engineType))
-    }, [token, dispatch])
+        dispatch(addNewCar(brand, model, carNumber, engineType))
+    }, [dispatch])
 
     const onVisitCurrentCar = React.useCallback((carId: number | undefined) => {
-        dispatch(getCurrentCar(token, carId))
+        dispatch(getCurrentCar(carId))
         navigate('/car')
-    }, [token, navigate, dispatch])
+    }, [navigate, dispatch])
 
     const engineTypes = ["FUEL", "HYBRID", "GAS"];
 
@@ -134,19 +136,19 @@ const CarList = React.memo(() => {
         validationSchema: Yup.object({
             brand: Yup.string()
                 .min(3, 'Must be at least 3 characters long')
-                .required(`This field is required. If you don't want to change this field information, repeat your current info anyway.`),
+                .required(`This field is required.`),
             model: Yup.string()
                 .min(2, 'Must be at least 2 characters long')
-                .required('This field is required. If you don\'t want to change this field information, repeat your current info anyway.'),
+                .required('This field is required.'),
             carNumber: Yup.string()
                 .min(7, 'Must be at least 7 characters long')
-                .required('This field is required. If you don\'t want to change this field information, repeat your current info anyway.'),
+                .required('This field is required.'),
             engineType: Yup.string().required("Please select a product").oneOf(engineTypes)
                 .min(3)
-                .required('This field is required. If you don\'t want to change this field information, repeat your current info anyway.'),
+                .required('This field is required.'),
         }),
         onSubmit: (values) => {
-            dispatch(updateCar(token, currentCarId, values.brand, values.model, values.carNumber, values.engineType))
+            dispatch(updateCar(currentCarId, values.brand, values.model, values.carNumber, values.engineType))
             editCarFormik.resetForm();
         },
     });
@@ -182,8 +184,6 @@ const CarList = React.memo(() => {
     }, [])
 
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, cars.length - page * rowsPerPage);
-
-
 
     return (
             <>
@@ -257,7 +257,9 @@ const CarList = React.memo(() => {
                                 rowsPerPage={rowsPerPage}
                                 page={page}
                                 onRowsPerPageChange={handleChangeRowsPerPage}
-                                onPageChange={handleChangePage}/>
+                                onPageChange={handleChangePage}
+                                className={classes.fontClass}
+                            />
                         </TableContainer>
                     </div>
                 </section>
@@ -267,7 +269,7 @@ const CarList = React.memo(() => {
                         <img src={closeModal} alt="close-modal"/>
                     </button>
                     <form onSubmit={addCarFormik.handleSubmit} className={s.form}>
-                        <div className={commonS.formLine}>
+                        <div className={commonS.formLine + ' ' + s.formLine}>
                             <SuperInputText
                                 id={'brand'}
                                 type={'text'}
@@ -279,7 +281,7 @@ const CarList = React.memo(() => {
                                 <div className={commonS.error}>{addCarFormik.errors.brand}</div>
                             ) : null}
                         </div>
-                        <div className={commonS.formLine}>
+                        <div className={commonS.formLine + ' ' + s.formLine}>
                             <SuperInputText
                                 id={'model'}
                                 type={'text'}
@@ -291,7 +293,7 @@ const CarList = React.memo(() => {
                                 <div className={commonS.error}>{addCarFormik.errors.model}</div>
                             ) : null}
                         </div>
-                        <div className={commonS.formLine}>
+                        <div className={commonS.formLine + ' ' + s.formLine}>
                             <SuperInputText
                                 id={'carNumber'}
                                 type={'text'}
@@ -303,7 +305,7 @@ const CarList = React.memo(() => {
                                 <div className={commonS.error}>{addCarFormik.errors.carNumber}</div>
                             ) : null}
                         </div>
-                        <div className={commonS.formLine}>
+                        <div className={commonS.formLine + ' ' + s.formLine}>
                             <SuperInputText
                                 id={'engineType'}
                                 type={'text'}
@@ -328,7 +330,7 @@ const CarList = React.memo(() => {
                         <img src={closeModal} alt="close-modal"/>
                     </button>
                     <form onSubmit={editCarFormik.handleSubmit} className={s.form}>
-                        <div className={commonS.formLine}>
+                        <div className={commonS.formLine + ' ' + s.formLine}>
                             <SuperInputText
                                 id={'brand'}
                                 type={'text'}
@@ -340,7 +342,7 @@ const CarList = React.memo(() => {
                                 <div className={''}>{editCarFormik.errors.brand}</div>
                             ) : null}
                         </div>
-                        <div className={commonS.formLine}>
+                        <div className={commonS.formLine + ' ' + s.formLine}>
                             <SuperInputText
                                 id={'model'}
                                 type={'text'}
@@ -352,7 +354,7 @@ const CarList = React.memo(() => {
                                 <div className={''}>{editCarFormik.errors.model}</div>
                             ) : null}
                         </div>
-                        <div className={commonS.formLine}>
+                        <div className={commonS.formLine + ' ' + s.formLine}>
                             <SuperInputText
                                 id={'carNumber'}
                                 type={'text'}
@@ -364,7 +366,7 @@ const CarList = React.memo(() => {
                                 <div className={''}>{editCarFormik.errors.carNumber}</div>
                             ) : null}
                         </div>
-                        <div className={commonS.formLine}>
+                        <div className={commonS.formLine + ' ' + s.formLine}>
                             <SuperInputText
                                 id={'engineType'}
                                 type={'text'}

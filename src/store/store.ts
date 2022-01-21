@@ -1,5 +1,5 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux';
-import thunkMiddleware, { ThunkAction } from 'redux-thunk';
+import thunkMiddleware from 'redux-thunk';
 import {authReducer} from "./auth-reducer";
 import {carsReducer} from "./cars-reducer";
 import {appReducer} from "./app-reducer";
