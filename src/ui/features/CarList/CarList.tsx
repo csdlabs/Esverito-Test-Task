@@ -50,7 +50,7 @@ const CarList = React.memo(() => {
         },
         fontClass: {
             fontFamily: 'PT Sans',
-            fontSize: 14,
+            fontSize: 15,
         }
     });
     const [addCarModal, setAddCarModal] = React.useState(false)
